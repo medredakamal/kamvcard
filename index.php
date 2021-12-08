@@ -5,11 +5,11 @@
     <h2>KamVCard</h2>
     <p>Export your personal & professional files into a vCard file ( .vcf )</p>
 
-    <form class='kv-form' method='post'>
+    <form class="kv-form" method="post">
         <ul>
             <li>
                 <label>First name : </label>
-                <input type="text" name="firstname">
+                <input type=" text" name="firstname">
             </li>
             <li>
                 <label>Last name : </label>
