@@ -30,3 +30,13 @@ ul {
 .kv-form > ul > li:last-of-type {
   margin-bottom: 13px;
 }
+
+/* Submit button */
+.kv-form > ul > button {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  background-color: #000;
+  color: #fff;
+  padding: 7px 25px;
+}
