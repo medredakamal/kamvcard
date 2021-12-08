@@ -9,7 +9,7 @@
         <ul>
             <li>
                 <label>First name : </label><br />
-                <input type=" text" name="firstname">
+                <input type="text" name="firstname">
             </li>
             <li>
                 <label>Last name : </label><br />
