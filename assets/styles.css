@@ -25,3 +25,8 @@ ul {
   font-size: 14px;
   font-weight: bold;
 }
+
+/* Field last item */
+.kv-form > ul > li:last-of-type {
+  margin-bottom: 13px;
+}
