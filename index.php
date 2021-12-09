@@ -12,6 +12,26 @@ ini_set("display_errors", 1);
 ini_set("display_startup_errors", 1);
 error_reporting(E_ALL);
 
+function exportvCard($data)
+{
+    # Init vCard instance
+    $uservcard = new VCard();
+
+    # vCard Data
+    $uservcard->addName($data["firstname"], $data["lastname"]);
+    $uservcard->addEmail($data["email"]);
+    $uservcard->addPhoneNumber($data["phone"], 'PREF;WORK');
+    $uservcard->addURL($data["website"]);
+    $uservcard->addCompany($data["company"]);
+    $uservcard->addPhoneNumber($data["officephone"], 'WORK');
+    $uservcard->addJobtitle($data["workposition"]);
+
+    # Set Filename
+    $uservcard->setFileName("vcard-" . $data["firstname"] . "-" . $data["lastname"]);
+
+    # Download vCard
+    $uservcard->download();
+}
 
 # Export Post Action
 if (!empty($_POST) && $_SERVER['REQUEST_METHOD'] == 'POST') {
