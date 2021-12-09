@@ -69,3 +69,10 @@ if (!empty($_POST) && $_SERVER['REQUEST_METHOD'] == 'POST') {
         </ul>
     </form>
 </div>
+
+<!-- # FIX: Prevent sending form after page reload -->
+<script>
+if (window.history.replaceState) {
+    window.history.replaceState(null, null, window.location.href);
+}
+</script>
