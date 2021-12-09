@@ -1,15 +1,24 @@
-# Export your profile to vCard file - PHP
+# KamVCard
 
-Just fill in the form with your informations, and hit the "Export" button , then a new .vcf file downloaded !
+Easy to have your own vCard file, fill in the form and hit the "Export" button
 
-# How to run it ?
+## How can i run this ?
 
+Install composer first
+
+```bash
 composer install
-php -S 127.0.0.2:1234 (use any host:port you want)
+```
 
-Packages used : jeroendesloovere/vcard
+## Then make it live !
 
-- - -
+```bash
+// use any host:port you want
 
-I'll be happy if i see some pull requests, or new things to add on it !
+php -S 127.0.0.1:1234
+```
 
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
