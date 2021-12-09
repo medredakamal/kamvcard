@@ -1,0 +1,12 @@
+{
+    "name": "medredakamal/projetvcard",
+    "description": "Export your personal & professional profile into a vCard file (.vcf)",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Med Reda Kamal",
+            "email": "medkamdeveloper@gmail.com"
+        }
+    ],
+    "require": {}
+}

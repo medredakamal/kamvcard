@@ -41,8 +41,9 @@ ul {
   padding: 7px 25px;
 }
 
+/* Field input */
 .kv-form > ul > li > input {
-    padding:2px 0 0 3px;
-    max-width: 270px;
-    width: 100%;
+  padding: 2px 0 0 3px;
+  max-width: 270px;
+  width: 100%;
 }
