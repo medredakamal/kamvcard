@@ -3,7 +3,7 @@
 
 <div class='kv-container'>
     <h2>KamVCard</h2>
-    <p>Export your personal & professional files into a vCard file ( .vcf )</p>
+    <p>Export your personal & professional profile into a vCard file ( .vcf )</p>
 
     <form class="kv-form" method="post">
         <ul>
