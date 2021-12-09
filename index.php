@@ -21,9 +21,6 @@ if (isset($_POST["action"]) && $_POST["action"] == "export_vcard") {
         'officephone'  => isset($_POST["officephone"]) ? $_POST["officephone"] : "",
         'workposition' => isset($_POST["workposition"]) ? $_POST["workposition"] : "",
     ];
-
-    # Debug $userdata variable
-    var_dump($userdata);
 }
 
 ?>
