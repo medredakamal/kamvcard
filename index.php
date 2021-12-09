@@ -1,12 +1,17 @@
 <?php
 
-# Require head file
-require_once './inc/head.php';
+# Require composer autoload & packages
+require_once './vendor/autoload.php';
+require_once './vendor/jeroendesloovere/vcard/src/VCard.php';
+
+# Use VCard Class
+use JeroenDesloovere\VCard\VCard;
 
 # Display all php errors
 ini_set("display_errors", 1);
 ini_set("display_startup_errors", 1);
 error_reporting(E_ALL);
+
 
 # Export Post Action
 if (!empty($_POST) && $_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -24,6 +29,11 @@ if (!empty($_POST) && $_SERVER['REQUEST_METHOD'] == 'POST') {
         ];
     }
 }
+
+
+# Require head file (repositioned here to prevent being inserted on vCard)
+require_once './inc/head.php';
+
 ?>
 
 <div class="kv-container">
