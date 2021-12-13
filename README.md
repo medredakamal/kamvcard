@@ -1,6 +1,9 @@
-# KamVCard
+# KamVCard PHP v1.00
 
 Easy to have your own vCard file, fill in the form and hit the "Export" button
+
+## Preview
+![KamVCard Preview](https://github.com/medredakamal/kamvcard/raw/main/kamvcard-preview.gif)
 
 ## How can i run this ?
 
