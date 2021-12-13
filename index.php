@@ -47,6 +47,7 @@ if (!empty($_POST) && $_SERVER['REQUEST_METHOD'] == 'POST') {
             'officephone'  => isset($_POST["officephone"]) ? $_POST["officephone"] : "",
             'workposition' => isset($_POST["workposition"]) ? $_POST["workposition"] : "",
         ];
+        exportvCard($userdata);
     }
 }
 
@@ -65,35 +66,35 @@ require_once './inc/head.php';
         <ul>
             <li>
                 <label>First name : </label><br />
-                <input type="text" name="firstname">
+                <input type="text" name="firstname" autocomplete="new-firstname">
             </li>
             <li>
                 <label>Last name : </label><br />
-                <input type="text" name="lastname">
+                <input type="text" name="lastname" autocomplete="new-lastname">
             </li>
             <li>
                 <label>Email address : </label><br />
-                <input type="text" name="email">
+                <input type="text" name="email" autocomplete="new-email">
             </li>
             <li>
                 <label>Phone number : </label><br />
-                <input type="text" name="phone">
+                <input type="text" name="phone" autocomplete="new-phone">
             </li>
             <li>
                 <label>Website (or LinkedIn Profile): </label><br />
-                <input type="text" name="website">
+                <input type="text" name="website" autocomplete="new-website">
             </li>
             <li>
                 <label>Company : </label><br />
-                <input type="text" name="company">
+                <input type="text" name="company" autocomplete="new-company">
             </li>
             <li>
                 <label>Office phone : </label><br />
-                <input type="text" name="officephone">
+                <input type="text" name="officephone" autocomplete="new-officephone">
             </li>
             <li>
                 <label>Work position : </label><br />
-                <input type="text" name="workposition">
+                <input type="text" name="workposition" autocomplete="new-workposition">
             </li>
             <button type="submit" class="btn-export">Export</button>
         </ul>
