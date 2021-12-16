@@ -8,7 +8,8 @@
 
 body {
   font-family: "Open Sans";
-  margin: 22.22px;
+  margin: 20px;
+  padding: 4px;
 }
 
 ul {
@@ -29,6 +30,11 @@ ul {
 /* Field last item */
 .kv-form > ul > li:last-of-type {
   margin-bottom: 13px;
+}
+
+/* Profile picture margin */
+.kv-profilepicture {
+  margin: 11px 0;
 }
 
 /* Submit button */

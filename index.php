@@ -96,6 +96,10 @@ require_once './inc/head.php';
                 <label>Work position : </label><br />
                 <input type="text" name="workposition" autocomplete="new-workposition">
             </li>
+            <li class="kv-profilepicture">
+                <label>Profile picture : </label><br />
+                <input type="file" name="profilepicture" autocomplete="new-profilepicture">
+            </li>
             <button type="submit" class="btn-export">Export</button>
         </ul>
     </form>
