@@ -12,7 +12,7 @@ ini_set("display_errors", 1);
 ini_set("display_startup_errors", 1);
 error_reporting(E_ALL);
 
-function exportvCard($data)
+function exportvCard($data, $image)
 {
     # Init vCard instance
     $uservcard = new VCard();
@@ -26,17 +26,27 @@ function exportvCard($data)
     $uservcard->addPhoneNumber($data["officephone"], 'WORK');
     $uservcard->addJobtitle($data["workposition"]);
 
+    # If vcard with image, then add photo
+    if (isset($image)) {
+        $uservcard->addPhoto("./" . $image);
+    }
+
     # Set Filename
-    $uservcard->setFileName("vcard-" . $data["firstname"] . "-" . $data["lastname"]);
+    $uservcard->setFileName("vcard");
 
     # Download vCard
     $uservcard->download();
+
+    # After downloading vCard, remove the image
+    if (isset($image)) {
+        unlink("./" . $image);
+    }
 }
 
 # Export Post Action
 if (!empty($_POST) && $_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST["action"]) && $_POST["action"] == "export_vcard") {
-
+        # Get user data
         $userdata = [
             'firstname'    => isset($_POST["firstname"]) ? $_POST["firstname"] : "",
             'lastname'     => isset($_POST["lastname"]) ? $_POST["lastname"] : "",
@@ -45,9 +55,55 @@ if (!empty($_POST) && $_SERVER['REQUEST_METHOD'] == 'POST') {
             'website'      => isset($_POST["website"]) ? $_POST["website"] : "",
             'company'      => isset($_POST["company"]) ? $_POST["company"] : "",
             'officephone'  => isset($_POST["officephone"]) ? $_POST["officephone"] : "",
-            'workposition' => isset($_POST["workposition"]) ? $_POST["workposition"] : "",
+            'workposition' => isset($_POST["workposition"]) ? $_POST["workposition"] : ""
         ];
-        exportvCard($userdata);
+
+        # Image processing
+        if (!empty($_FILES["profilepicture"]["name"])) {
+            $img_status = false;
+            $img_msg = "";
+
+            $img_dir = "images/";
+            $img_file = $img_dir . basename($_FILES["profilepicture"]["name"]);
+            $img_ext = strtolower(pathinfo($img_file, PATHINFO_EXTENSION));
+            $img_size = getimagesize($_FILES["profilepicture"]["tmp_name"]);
+
+            # If image
+            if ($img_size !== false) {
+                $img_status = true;
+            } else {
+                $img_msg = "Invalid image !";
+                $img_status = false;
+                echo $img_msg;
+            }
+
+            # Image file type
+            if ($img_ext !== "jpg") {
+                $img_msg = "File type not allowed, use jpg,jpeg,png";
+                $img_status = false;
+                echo $img_msg;
+            }
+
+            # Upload image
+            if ($img_status == false) {
+                $img_msg = "Cannot upload image , try again.";
+                echo $img_msg;
+            } else {
+                if (move_uploaded_file($_FILES["profilepicture"]["tmp_name"], $img_file)) {
+                    $img_msg = "Image uploaded successfully !";
+                    echo $img_msg;
+                } else {
+                    $img_msg = "Sorry, there was an error uploading your image.";
+                    echo $img_msg;
+                }
+            }
+
+            # Export vcard with image
+            exportvCard($userdata, $img_file);
+        } else {
+            # Export vcard without image
+            exportvCard($userdata, null);
+        }
     }
 }
 
@@ -61,7 +117,7 @@ require_once './inc/head.php';
     <h2>KamVCard</h2>
     <p>Export your personal & professional profile into a vCard file ( .vcf )</p>
 
-    <form class="kv-form" method="post">
+    <form class="kv-form" method="post" enctype="multipart/form-data">
         <input type="hidden" name="action" value="export_vcard">
         <ul>
             <li>
