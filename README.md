@@ -2,7 +2,7 @@
 
 Easy to have your own vCard file, fill in the form and hit the "Export" button
 
-### UPDATE : Now you can add your picture pciture buy uokk
+### UPDATE : Now you can add your picture too !
 
 ## Preview
 ![KamVCard Preview](https://github.com/medredakamal/kamvcard/raw/main/kamvcard-preview.gif)
